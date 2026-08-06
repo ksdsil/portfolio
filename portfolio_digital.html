@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alexsander Teixeira da Silva · Eng. Mecânico · Analista de Dados</title>
+<meta name="description" content="Trajetória de 29 anos da usinagem à inteligência de dados — um profissional técnico, industrial e versátil." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+<style>
+  :root{
+    --bg:#0d1117;
+    --bg-2:#11161f;
+    --panel:#161b26;
+    --panel-2:#1c2230;
+    --line:#262d3d;
+    --txt:#e6edf3;
+    --muted:#8b95a7;
+    --amber:#ff9500;
+    --amber-2:#ffb84d;
+    --cyan:#22d3ee;
+    --cyan-2:#7dd3fc;
+    --green:#34d399;
+    --grad:linear-gradient(120deg,#ff9500 0%,#ffb84d 35%,#22d3ee 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--txt);
+    line-height:1.55;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 15% 10%,rgba(255,149,0,.08),transparent 40%),
+      radial-gradient(circle at 85% 90%,rgba(34,211,238,.08),transparent 40%);
+  }
+  /* Blueprint grid */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:48px 48px;
+    pointer-events:none;
+    z-index:0;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;line-height:1.1;font-weight:600}
+  .mono{font-family:'JetBrains Mono',monospace}
+  a{color:inherit;text-decoration:none}
+
+  /* ===== Scroll progress ===== */
+  .progress{
+    position:fixed;top:0;left:0;height:3px;width:0;
+    background:var(--grad);
+    z-index:1000;transition:width .1s linear;
+    box-shadow:0 0 12px rgba(255,149,0,.6);
+  }
+  /* ===== Nav ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:900;
+    padding:14px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(13,17,23,.7);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-family:'Space Grotesk'}
+  .brand .dot{width:10px;height:10px;border-radius:2px;background:var(--grad);box-shadow:0 0 12px var(--amber)}
+  .nav-links{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--amber)}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* ===== HERO ===== */
+  #hero{
+    min-height:100vh;
+    padding:120px 24px 60px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:60px;align-items:center;
+    max-width:1200px;margin:0 auto;
+    position:relative;z-index:1;
+  }
+  @media(max-width:900px){#hero{grid-template-columns:1fr;padding-top:100px;text-align:center}}
+
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border:1px solid var(--line);
+    border-radius:999px;font-size:12px;color:var(--muted);
+    background:rgba(255,255,255,.02);
+    margin-bottom:24px;
+  }
+  .hero-tag i{color:var(--amber)}
+  .hero-tag .live{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  h1.hero-name{
+    font-size:clamp(34px,5vw,58px);
+    letter-spacing:-1px;
+    background:var(--grad);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:8px;
+  }
+  .hero-role{font-size:clamp(15px,2vw,20px);color:var(--cyan-2);font-family:'Space Grotesk';margin-bottom:18px}
+  .hero-desc{color:var(--muted);max-width:520px;font-size:15px;margin:0 auto 28px}
+  @media(min-width:901px){.hero-desc{margin-left:0}}
+
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  @media(min-width:901px){.hero-cta{justify-content:flex-start}}
+  .btn{
+    padding:12px 22px;border-radius:10px;font-weight:600;font-size:14px;
+    display:inline-flex;align-items:center;gap:8px;transition:.25s;cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--grad);color:#0d1117}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,149,0,.35)}
+  .btn-ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+
+  /* ID Badge */
+  .badge{
+    position:relative;
+    background:linear-gradient(160deg,var(--panel) 0%,var(--bg-2) 100%);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);
+    overflow:hidden;
+  }
+  .badge::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad);
+  }
+  .badge::after{
+    content:"";position:absolute;top:18px;right:18px;
+    width:46px;height:46px;border-radius:50%;
+    background:repeating-conic-gradient(#0000 0 20deg,rgba(255,255,255,.06) 20deg 40deg);
+  }
+  .badge-head{display:flex;gap:18px;align-items:center;margin-bottom:18px}
+  .avatar{
+    width:96px;height:96px;border-radius:14px;
+    background:linear-gradient(135deg,var(--amber) 0%,#7c2d12 100%);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk';font-weight:700;font-size:30px;color:#0d1117;
+    border:2px solid var(--amber-2);
+    box-shadow:0 0 0 4px rgba(255,149,0,.15);
+    flex-shrink:0;
+    background-size:cover;background-position:center;
+  }
+  .badge-meta .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:2px}
+  .badge-meta .name{font-size:18px;font-weight:600;font-family:'Space Grotesk'}
+  .badge-meta .role{font-size:13px;color:var(--cyan-2)}
+  .badge-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .badge-cell{background:var(--panel-2);padding:12px 14px}
+  .badge-cell .k{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .badge-cell .v{font-size:18px;font-weight:600;font-family:'JetBrains Mono';color:var(--amber)}
+  .barcode{margin-top:16px;height:34px;background:repeating-linear-gradient(90px,#fff 0 2px,transparent 2px 4px,#fff 4px 5px,transparent 5px 9px);opacity:.8;border-radius:2px}
+  .badge-foot{margin-top:8px;text-align:center;font-size:10px;color:var(--muted);letter-spacing:3px}
+
+  .scroll-cue{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    color:var(--muted);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:8px;
+    animation:bob 2s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+  /* ===== Section base ===== */
+  section{position:relative;z-index:1;padding:90px 24px}
+  .container{max-width:1100px;margin:0 auto}
+  .sec-head{text-align:center;margin-bottom:50px}
+  .sec-kicker{color:var(--amber);font-family:'JetBrains Mono';font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+  .sec-title{font-size:clamp(26px,4vw,40px);letter-spacing:-.5px}
+  .sec-sub{color:var(--muted);max-width:560px;margin:14px auto 0;font-size:15px}
+
+  /* ===== Stats ===== */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+  .stat{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 18px;
+    text-align:center;transition:.3s;
+  }
+  .stat:hover{border-color:var(--amber);transform:translateY(-4px)}
+  .stat .num{font-family:'JetBrains Mono';font-size:32px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .lbl{font-size:12px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+
+  /* ===== TIMELINE ===== */
+  .timeline{position:relative;max-width:980px;margin:0 auto;padding:10px 0}
+  .timeline::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);
+    background:linear-gradient(180deg,var(--amber) 0%,var(--amber-2) 40%,var(--cyan) 100%);
+    box-shadow:0 0 18px rgba(255,149,0,.3);
+  }
+  @media(max-width:760px){.timeline::before{left:18px}}
+
+  .tl-item{position:relative;display:grid;grid-template-columns:1fr 80px 1fr;align-items:center;margin-bottom:36px}
+  @media(max-width:760px){.tl-item{grid-template-columns:36px 1fr;gap:14px}}
+
+  .tl-dot{
+    grid-column:2;
+    width:22px;height:22px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--amber);
+    justify-self:center;position:relative;z-index:2;
+    box-shadow:0 0 0 6px rgba(255,149,0,.12);
+  }
+  .tl-item.late .tl-dot{border-color:var(--cyan);box-shadow:0 0 0 6px rgba(34,211,238,.12)}
+  @media(max-width:760px){.tl-dot{grid-column:1;justify-self:start}}
+
+  .tl-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;transition:.3s;
+  }
+  .tl-card:hover{border-color:var(--amber);transform:translateY(-3px)}
+  .tl-item.late .tl-card:hover{border-color:var(--cyan)}
+  .tl-item:nth-child(odd) .tl-card{grid-column:1;text-align:right}
+  .tl-item:nth-child(even) .tl-card{grid-column:3}
+  @media(max-width:760px){
+    .tl-item:nth-child(odd) .tl-card,
+    .tl-item:nth-child(even) .tl-card{grid-column:2;text-align:left}
+  }
+  .tl-year{font-family:'JetBrains Mono';font-size:13px;color:var(--amber);font-weight:700;margin-bottom:4px}
+  .tl-item.late .tl-year{color:var(--cyan)}
+  .tl-role{font-family:'Space Grotesk';font-size:16px;font-weight:600;margin-bottom:6px}
+  .tl-co{color:var(--muted);font-size:12px;margin-bottom:8px}
+  .tl-desc{font-size:13px;color:#cbd5e1}
+  .tl-icon{
+    display:inline-flex;align-items:center;gap:6px;
+    margin-top:10px;font-size:11px;color:var(--muted);
+    padding:4px 10px;border:1px solid var(--line);border-radius:999px;
+  }
+  .tl-icon i{color:var(--amber)}
+  .tl-item.late .tl-icon i{color:var(--cyan)}
+
+  /* Education badges floating */
+  .edu-mini{
+    display:inline-block;font-size:10px;color:var(--muted);
+    background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.25);
+    padding:2px 8px;border-radius:6px;margin-top:8px;font-family:'JetBrains Mono';
+  }
+  .tl-item:nth-child(odd) .edu-mini{margin-left:4px}
+  .tl-item:nth-child(even) .edu-mini{margin-right:4px}
+  @media(max-width:760px){.tl-item:nth-child(odd) .edu-mini,.tl-item:nth-child(even) .edu-mini{margin:8px 4px 0 0}}
+
+  /* ===== HOVER CARDS (Competências) ===== */
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px}
+  .h-card{
+    position:relative;height:260px;border-radius:16px;overflow:hidden;
+    border:1px solid var(--line);background:var(--panel);cursor:pointer;
+    display:flex;
+    transition:.5s cubic-bezier(.2,.8,.2,1);
+  }
+  .h-card .img{
+    flex:1 1 100%;
+    background-size:cover;background-position:center;
+    transition:.5s cubic-bezier(.2,.8,.2,1);
+    position:relative;
+  }
+  .h-card .img::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 40%,rgba(13,17,23,.85) 100%);
+  }
+  .h-card .label{
+    position:absolute;left:18px;bottom:14px;z-index:3;
+    font-family:'Space Grotesk';font-weight:600;font-size:17px;
+    display:flex;align-items:center;gap:10px;
+    transition:.4s;
+  }
+  .h-card .label i{
+    width:34px;height:34px;border-radius:9px;
+    background:var(--grad);color:#0d1117;
+    display:flex;align-items:center;justify-content:center;font-size:14px;
+  }
+  .h-card .hint{
+    position:absolute;top:14px;right:14px;z-index:3;
+    font-size:10px;color:var(--muted);font-family:'JetBrains Mono';
+    padding:4px 9px;background:rgba(13,17,23,.6);border:1px solid var(--line);border-radius:6px;
+    transition:.4s;
+  }
+  .h-card .msg{
+    flex:0 0 0;
+    background:linear-gradient(135deg,var(--panel-2) 0%,var(--bg-2) 100%);
+    padding:24px;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:center;
+    transition:.5s cubic-bezier(.2,.8,.2,1);
+    opacity:0;
+  }
+  .h-card .msg h4{font-size:16px;margin-bottom:10px;color:var(--amber-2)}
+  .h-card .msg p{font-size:13px;color:#cbd5e1;line-height:1.5}
+  .h-card .msg .tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+  .h-card .msg .tags span{font-size:10px;padding:3px 9px;border-radius:6px;background:rgba(34,211,238,.1);color:var(--cyan-2);border:1px solid rgba(34,211,238,.25);font-family:'JetBrains Mono'}
+
+  .h-card:hover{border-color:var(--amber)}
+  .h-card:hover .img{flex:0 0 42%}
+  .h-card:hover .img::after{background:linear-gradient(180deg,rgba(13,17,23,.4) 0%,rgba(13,17,23,.95) 100%)}
+  .h-card:hover .msg{flex:0 0 58%;opacity:1}
+  .h-card:hover .label{font-size:14px;bottom:auto;top:14px}
+  .h-card:hover .label i{width:28px;height:28px;font-size:12px}
+  .h-card:hover .hint{opacity:0}
+
+  /* ===== Pilares (4 versáteis) ===== */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+  @media(max-width:900px){.pillars{grid-template-columns:repeat(2,1fr)}}
+  .pillar{
+    padding:22px 18px;background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    text-align:center;transition:.3s;position:relative;overflow:hidden;
+  }
+  .pillar:hover{transform:translateY(-5px);border-color:var(--amber)}
+  .pillar i{font-size:26px;margin-bottom:10px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pillar h4{font-size:15px;margin-bottom:4px}
+  .pillar p{font-size:11px;color:var(--muted)}
+
+  /* ===== Footer ===== */
+  footer{
+    border-top:1px solid var(--line);
+    padding:50px 24px;text-align:center;color:var(--muted);font-size:13px;
+    background:var(--bg-2);position:relative;z-index:1;
+  }
+  footer .ft-name{font-family:'Space Grotesk';color:var(--txt);font-weight:600;font-size:16px;margin-bottom:6px}
+  footer .ft-links{display:flex;gap:18px;justify-content:center;margin:18px 0;font-size:18px}
+  footer .ft-links a{color:var(--muted);transition:.2s}
+  footer .ft-links a:hover{color:var(--amber)}
+
+  /* Floating gears (decor) */
+  .gear{position:fixed;pointer-events:none;opacity:.05;z-index:0;color:#fff}
+  .gear.g1{top:8%;right:6%;font-size:180px;animation:spin 40s linear infinite}
+  .gear.g2{bottom:10%;left:4%;font-size:140px;animation:spin 60s linear infinite reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- Barra de progresso de "evolução" -->
+<div class="progress" id="progress"></div>
+
+<!-- Engrenagens decorativas -->
+<i class="fa-solid fa-gear gear g1"></i>
+<i class="fa-solid fa-gear gear g2"></i>
+
+<!-- NAV -->
+<nav>
+  <div class="brand"><span class="dot"></span> ATS · Eng. Mecânico & BI</div>
+  <div class="nav-links">
+    <a href="#trajetoria">Trajetória</a>
+    <a href="#competencias">Competências</a>
+    <a href="#pilares">Pilares</a>
+    <a href="#contato">Contato</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div data-aos="fade-up">
+    <div class="hero-tag"><span class="live"></span> 29 anos · da bancada ao dashboard</div>
+    <h1 class="hero-name">Alexsander Teixeira<br>da Silva</h1>
+    <div class="hero-role">Engenheiro Mecânico · Analista de Dados · Consultor de Eficiência Energética</div>
+    <p class="hero-desc">Do torno automático em 1996 ao Python + AWS em 2025 — uma trajetória que une precisão centesimal, chão de fábrica e inteligência de dados.</p>
+    <div class="hero-cta">
+      <a href="#trajetoria" class="btn btn-primary"><i class="fa-solid fa-route"></i> Ver trajetória</a>
+      <a href="#competencias" class="btn btn-ghost"><i class="fa-solid fa-layer-group"></i> Competências</a>
+    </div>
+  </div>
+
+  <!-- ID Badge -->
+  <div data-aos="zoom-in" data-aos-delay="150">
+    <div class="badge">
+      <div class="badge-head">
+        <!-- FOTO: substitua o background-image pelo seu arquivo foto.jpg -->
+        <div class="avatar" style="background-image:/home/alex/Imagens/foto_perfil.jpeg('');">
+          <!-- fallback inicial -->
+          <span style="background:linear-gradient(135deg,#ff9500,#7c2d12);width:100%;height:100%;display:flex;align-items:center;justify-content:center;border-radius:12px">ATS</span>
+        </div>
+        <div class="badge-meta">
+          <div class="lbl">CRACHÁ PROFISSIONAL</div>
+          <div class="name">Alexsander T. da Silva</div>
+          <div class="role">Eng. Mecânico · Dados</div>
+        </div>
+      </div>
+      <div class="badge-grid">
+        <div class="badge-cell"><div class="k">Início</div><div class="v">1996</div></div>
+        <div class="badge-cell"><div class="k">Experiência</div><div class="v">29 anos</div></div>
+        <div class="badge-cell"><div class="k">Formação</div><div class="v">2017</div></div>
+        <div class="badge-cell"><div class="k">Stack atual</div><div class="v">PY · AWS</div></div>
+      </div>
+      <div class="barcode"></div>
+      <div class="badge-foot">ID · ATS-1996-2026 · INDÚSTRIA & DADOS</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>role para evoluir</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:20px;padding-bottom:40px">
+  <div class="container">
+    <div class="stats-grid" data-aos="fade-up">
+      <div class="stat"><div class="num">29</div><div class="lbl">Anos de indústria</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">Montadoras atendidas</div></div>
+      <div class="stat"><div class="num">ISO 50001</div><div class="lbl">Coautor de certificação</div></div>
+      <div class="stat"><div class="num">PY · AWS</div><div class="lbl">Stack de dados</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAJETÓRIA -->
+<section id="trajetoria">
+  <div class="container">
+    <div class="sec-head" data-aos="fade-up">
+      <div class="sec-kicker">// linha do tempo</div>
+      <h2 class="sec-title">Do chão da fábrica até o dashboard na tela</h2>
+      <p class="sec-sub">Trajetória profissional quem conhece a operação por dentro, combinada com a capacidade analítica de quem transforma dados em decisões.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item" data-aos="fade-up">
+        <div class="tl-card">
+          <div class="tl-year">1996 — 2000</div>
+          <div class="tl-role">Torneiro Revólver</div>
+          <div class="tl-co">Peças para empilhadeiras</div>
+          <div class="tl-desc">Contatores elétricos de cobre, tarugos de aço e montagem de rolamentos em torno automático e CNC.</div>
+          <div class="tl-icon"><i class="fa-solid fa-screwdriver-wrench"></i> Usinagem</div>
+          <span class="edu-mini">📘 SENAI Mecânica · 1997</span>
+        </div>
+        <div class="tl-dot"></div>
+        <div></div>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up">
+        <div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2000 — 2002</div>
+          <div class="tl-role">Torneiro Mecânico</div>
+          <div class="tl-co">Válvulas industriais</div>
+          <div class="tl-desc">Torneamento, plaina e fresadora em aço inox, ferro fundido, bronze, nylon e teflon.</div>
+          <div class="tl-icon"><i class="fa-solid fa-gears"></i> Válvulas grande porte</div>
+          <span class="edu-mini">📘 Ensino Médio · 2000</span>
+        </div>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up">
+        <div class="tl-card">
+          <div class="tl-year">2003 — 2007</div>
+          <div class="tl-role">Usinagem & Máquinas</div>
+          <div class="tl-co">Usinagem  + Máquinas de Macarrão</div>
+          <div class="tl-desc">Precisão centesimal, mancais, rolos de corte e máquinas de grande porte.</div>
+          <div class="tl-icon"><i class="fa-solid fa-industry"></i> Máquinas industriais</div>
+        </div>
+        <div class="tl-dot"></div>
+        <div></div>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up">
+        <div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2007 — 2010</div>
+          <div class="tl-role">Torneiro de Ferramentaria</div>
+          <div class="tl-co">Extrusão de alumínio · autopeças · linha branca</div>
+          <div class="tl-desc">Queimadores de fogão, cápsulas para a indústria bélica e moldes de extrusão.</div>
+          <div class="tl-icon"><i class="fa-solid fa-fire"></i> Extrusão & moldes</div>
+          <span class="edu-mini">💻 Informática · 2007</span>
+        </div>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up">
+        <div class="tl-card">
+          <div class="tl-year">2011 — 2013</div>
+          <div class="tl-role">Ferramentaria de Estamparia</div>
+          <div class="tl-co">Autopeças +500 func. · Ford · VW · Fiat</div>
+          <div class="tl-desc">Ferramentas de corte, dobra e repuxo. Reformas para solda e manutenção.</div>
+          <div class="tl-icon"><i class="fa-solid fa-car"></i> Estamparia automotiva</div>
+          <span class="edu-mini">🎓 Início Eng. Mecânica · 2012</span>
+        </div>
+        <div class="tl-dot"></div>
+        <div></div>
+      </div>
+
+      <div class="tl-item late" data-aos="fade-up">
+        <div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2014 — 2015</div>
+          <div class="tl-role">Mecânico de Manutenção</div>
+          <div class="tl-co">Siemens Industry → Amcor</div>
+          <div class="tl-desc">Desbaste de rolos de rotogravura e manutenção de tubulações, bombas e refrigeração.</div>
+          <div class="tl-icon"><i class="fa-solid fa-fan"></i> Utilities</div>
+          <span class="edu-mini">🗣️ Inglês · 2014</span>
+        </div>
+      </div>
+
+      <div class="tl-item late" data-aos="fade-up">
+        <div class="tl-card">
+          <div class="tl-year">2015 — 2017</div>
+          <div class="tl-role">Mecânico de Manutenção Industrial</div>
+          <div class="tl-co">Amcor · Utilidades</div>
+          <div class="tl-desc">Refrigeração, ar comprimido, óleo térmico. Coleta diária de dados e apontamentos SAP.</div>
+          <div class="tl-icon"><i class="fa-solid fa-temperature-arrow-down"></i> Refrigeração industrial</div>
+          <span class="edu-mini">🎓 Eng. Mecânica concluída · 2017</span>
+        </div>
+        <div class="tl-dot"></div>
+        <div></div>
+      </div>
+
+      <div class="tl-item late" data-aos="fade-up">
+        <div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2017 — 2019</div>
+          <div class="tl-role">Manutenção + Comissão de Energia</div>
+          <div class="tl-co">Amcor Embalagens</div>
+          <div class="tl-desc">Bombas, pneumática, hidráulica. Coautor de uma das 6 primeiras ISO 50001 da América Latina.</div>
+          <div class="tl-icon"><i class="fa-solid fa-bolt"></i> Eficiência energética</div>
+          <span class="edu-mini">⚡ Eficiência Energética SENAI · 2016</span>
+          <span class="edu-mini">🐍 Python · 2019</span>
+        </div>
+      </div>
+
+      <div class="tl-item late" data-aos="fade-up">
+        <div class="tl-card">
+          <div class="tl-year">2019 — 2025</div>
+          <div class="tl-role">Consultor de Eficiência Energética (PJ)</div>
+          <div class="tl-co">Vigor · Magic City</div>
+          <div class="tl-desc">Coleta, tratamento e laudos de consumo — principalmente refrigeradores.</div>
+          <div class="tl-icon"><i class="fa-solid fa-chart-line"></i> Dados de energia</div>
+          <span class="edu-mini">🗄️ DBA · 2024</span>
+          <span class="edu-mini">🤖 MS AI-900 · 2025</span>
+          <span class="edu-mini">📈 AWS · 2025</span>
+        </div>
+        <div class="tl-dot"></div>
+        <div></div>
+      </div>
+
+      <div class="tl-item late" data-aos="fade-up">
+        <div></div>
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2025 — 2026</div>
+          <div class="tl-role">Analista de BI</div>
+          <div class="tl-co">FácilAssist</div>
+          <div class="tl-desc">REST APIs, webscraping, ETL e scripts Python na VM — da operação ao financeiro.</div>
+          <div class="tl-icon"><i class="fa-solid fa-database"></i> BI & Automação</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPETÊNCIAS — HOVER CARDS -->
+<section id="competencias">
+  <div class="container">
+    <div class="sec-head" data-aos="fade-up">
+      <div class="sec-kicker">// passe o mouse</div>
+      <h2 class="sec-title">Cada imagem, uma competência</h2>
+      <p class="sec-sub">Na foto, o chão de fábrica. No hover, a mensagem que ficou dela.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="h-card" data-aos="fade-up">
+        <div class="img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/233e3539-26a0-4287-884f-311fd64ba0d0.png?auth_key=1885957336-20b1a1c6e4db4d7f95af28ab515e445b-0-dab98819faa9e7550faaeb6cc056c5d3')"></div>
+        <div class="label"><i class="fa-solid fa-screwdriver-wrench"></i> Usinagem de Precisão</div>
+        <div class="hint">hover →</div>
+        <div class="msg">
+          <h4>Do cobre ao aço inox</h4>
+          <p>Tornos automáticos, CNC, plaina e fresadora. Precisão centesimal em peças para autopeças e ferramentaria.</p>
+          <div class="tags"><span>Torno CNC</span><span>Centesimal</span><span>Ferramentaria</span></div>
+        </div>
+      </div>
+
+      <div class="h-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/2c1cfd11-d0c2-46af-8458-89cf86fc72cb.jpeg?auth_key=1885957336-9b133559940e49d38da0b6c6f6946828-0-c8bb7e59c5bc904d07ed701d55214b4a')"></div>
+        <div class="label"><i class="fa-solid fa-industry"></i> Construção de Máquinas </div>
+        <div class="hint">hover →</div>
+        <div class="msg">
+          <h4>Fabricação de máquinas</h4>
+          <p>Mancais, rolos de corte e componentes críticos de máquinas industriais de grande porte.</p>
+          <div class="tags"><span>Mancais</span><span>Rolos</span><span>Aço carbono</span></div>
+        </div>
+      </div>
+
+      <div class="h-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/5c03f4fe-0670-4911-ab02-5d60d99ace54.jpeg?auth_key=1885957336-aea620796ea2418e8ce86e7d0b84094c-0-74ebfeb458b15c0a82979f6eb180d84e')"></div>
+        <div class="label"><i class="fa-solid fa-print"></i> Manutenção máquinas de porte</div>
+        <div class="hint">hover →</div>
+        <div class="msg">
+          <h4>Da bancada ao dado</h4>
+          <p>Início na manutenção de cilindros de rotogravura — Manutenção de sistemas pneumáticos, hidráulicos e mecânicos.</p>
+          <div class="tags"><span>Rotogravura</span><span>Sistemas complexos</span><span>Preventiva</span></div>
+        </div>
+      </div>
+
+      <div class="h-card" data-aos="fade-up">
+        <div class="img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/bba5d38f-2348-4c44-a258-6ec2ce457241.jpg?auth_key=1885957336-fa44876d2f4d43298433c88e6dc3f2c4-0-10f107044a4863b6955b84d236d3a5ee')"></div>
+        <div class="label"><i class="fa-solid fa-oil-can"></i> Manutenção em utilidades</div>
+        <div class="hint">hover →</div>
+        <div class="msg">
+          <h4>Utilities & manutenção</h4>
+          <p>Tanque de expansão, aquecedores e sistemas de óleo térmico. Confiabilidade do parque industrial.</p>
+          <div class="tags"><span>Utilities</span><span>Amcor</span><span>SAP</span></div>
+        </div>
+      </div>
+      
+       <div class="h-card" data-aos="fade-up">
+        <div class="img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/94fe8413-842f-4339-93ad-e2a124c889d4.JPG?auth_key=1885957336-4d93755e9a3745f098ed1a7f6641b81d-0-87f5c4ce09e81ffebd92848af956a1bb')"></div>
+        <div class="label"><i class="fa-solid fa-shield-halved"></i> Segurança</div>
+        <div class="hint">hover →</div>
+        <div class="msg">
+          <h4>Brigada & cultura</h4>
+          <p>Curso de brigadista: preparo que protege pessoas, processo e continuidade operacional.</p>
+          <div class="tags"><span>Brigada</span><span>SMS</span><span>Resiliência</span></div>
+        </div>
+      </div>
+
+      <div class="h-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/4f49d28b-c20c-4e85-b0fc-3abef6fa4765.jpeg?auth_key=1885957336-75d0c83996ae418786828176e6569ff2-0-e7b153f09b3272115415fda9bbaae545')"></div>
+        <div class="label"><i class="fa-solid fa-snowflake"></i> Refrigeração</div>
+        <div class="hint">hover →</div>
+        <div class="msg">
+          <h4>Chillers</h4>
+          <p>Operação e manutenção de chillers alternativos, bombas e ar comprimido.</p>
+          <div class="tags"><span>Chiller's</span><span>Alternativo</span><span>Bomba Centrífuga</span></div>
+        </div>
+      </div>
+
+      <div class="h-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/75aeed8a-4018-4d45-9d34-71037e0661e4.jpeg?auth_key=1885957336-8251d4887efb47a889e6c843c326eb0b-0-25d6eba88f840e42994a0b1b51e33698')"></div>
+        <div class="label"><i class="fa-solid fa-bolt"></i> Eficiência Energética</div>
+        <div class="hint">hover →</div>
+        <div class="msg">
+          <h4>Dados viram laudo</h4>
+          <p>Coleta e tratamento de consumo energético. Consultoria para Vigor e Magic City.</p>
+          <div class="tags"><span>ISO 50001</span><span>Laudos</span><span>Python</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA INDÚSTRIA + DADOS -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="cta-box" data-aos="fade-up">
+      <div class="cta-content">
+        <div class="sec-kicker" style="text-align:left;margin-bottom:8px;">// indústria 4.0</div>
+        <h3 class="cta-title">O que um Analista de Dados com DNA industrial realmente entrega?</h3>
+        <p class="cta-desc">
+          <strong>Previsibilidade operacional</strong>, <strong>decisão rápida</strong> e <strong>redução concreta de custos</strong>. Não se trata de criar e ler dashboards, mas entender a física por trás do número. É prever a vida útil de um ativo, entender e reduzir <strong>OPEX</strong> e otimizar <strong>KPI's</strong>.
+        </p>
+      </div>
+      <a href="#contato" class="btn btn-primary cta-btn"><i class="fa-solid fa-handshake"></i> Vamos conversar?</a>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section id="pilares" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head" data-aos="fade-up">
+      <div class="sec-kicker">// versatilidade</div>
+      <h2 class="sec-title">4 pilares, 1 profissional</h2>
+      <p class="sec-sub">Versátil por natureza: técnico de indústria que fala a língua do dado.</p>
+    </div>
+    <div class="pillars" data-aos="fade-up">
+      <div class="pillar"><i class="fa-solid fa-screwdriver-wrench"></i><h4>Usinagem</h4><p>Tornos automáticos, CNC e ferramentaria centesimal</p></div>
+      <div class="pillar"><i class="fa-solid fa-gears"></i><h4>Manutenção</h4><p>Utilities, Gdes Máquinas,bombas, pneumática e hidráulica</p></div>
+      <div class="pillar"><i class="fa-solid fa-bolt"></i><h4>Consultoria Técnica</h4><p>ISO 50001, laudos e consultoria de eficiência</p></div>
+      <div class="pillar"><i class="fa-solid fa-database"></i><h4>Dados</h4><p>Python, ETL, REST APIs e BI em nuvem AWS</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contato">
+  <div class="ft-name">Alexsander Teixeira da Silva</div>
+  <div>Eng. Mecânico · Analista de Dados · Consultor de Eficiência Energética</div>
+  <div class="ft-links">
+    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="#" title="E-mail"><i class="fa-solid fa-envelope"></i></a>
+    <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  </div>
+  <div>São Paulo · Brasil · 1996 → 2026</div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({duration:700,once:true,offset:80});
+
+  // Barra de progresso de "evolução"
+  const bar=document.getElementById('progress');
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const sc=(h.scrollTop)/(h.scrollHeight-h.clientHeight);
+    bar.style.width=(sc*100)+'%';
+  });
+
+  // Anima entradas dos cards quando em viewport (já cobertos pelo AOS, mas força reflow suave)
+  document.querySelectorAll('.h-card').forEach(c=>{
+    c.addEventListener('mouseenter',()=>c.style.zIndex='5');
+    c.addEventListener('mouseleave',()=>c.style.zIndex='1');
+  });
+</script>
+</body>
+</html>
